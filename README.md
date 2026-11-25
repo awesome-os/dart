@@ -76,3 +76,13 @@ Future plans for Dart are included in the combined Dart and Flutter
 [roadmap]: https://github.com/flutter/flutter/blob/master/docs/roadmap/Roadmap.md
 [tools]: https://dart.dev/tools
 [website]: https://dart.dev
+
+## Quick Install & Run (Windows / Linux / macOS)
+
+```sh
+# Install / hydrate from v11 CAS via holo-pm
+holo-pm install repository://github.com/awesome-os/dart@main
+
+# Or project & run directly via holo-project (0-byte hardlink)
+holo-project "project://dart/dart?from=repository://github.com/awesome-os/dart@main"
+```
