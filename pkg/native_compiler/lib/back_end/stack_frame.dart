@@ -1,0 +1,126 @@
+// Copyright (c) 2026, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+import 'package:cfg/ir/functions.dart';
+import 'package:cfg/ir/instructions.dart';
+import 'package:cfg/ir/local_variable.dart';
+import 'package:cfg/utils/misc.dart';
+import 'package:native_compiler/back_end/locations.dart';
+import 'package:native_compiler/back_end/safepoint.dart';
+
+/// Base class for architecture-specific stack frame layout.
+abstract base class StackFrame {
+  final CFunction function;
+
+  int _usedSpillSlots = 0;
+  int _maxArgumentsStackSlots = 0;
+  bool _finalized = false;
+
+  /// Slots holding values of local variables for exception handlers.
+  final Map<LocalVariable, CatchSlotLocation> _catchSlots = {};
+
+  StackFrame(this.function);
+
+  bool get isFinalized => _finalized;
+
+  int get usedSpillSlots {
+    assert(isFinalized);
+    return _usedSpillSlots;
+  }
+
+  int get maxArgumentsStackSlots {
+    assert(isFinalized);
+    return _maxArgumentsStackSlots;
+  }
+
+  /// Size of the spill slot with given [valueClass].
+  int spillSlotSizeInWords(ValueClass valueClass);
+
+  /// Alignment of the spill slot with given [valueClass].
+  int spillSlotAlignmentInWords(ValueClass valueClass);
+
+  /// Number of arguments stack slots required for [instr].
+  int argumentsStackSlots(Instruction instr);
+
+  /// Offset of [location] relative to the frame pointer, in bytes.
+  /// Should be used only after the frame is finalized.
+  int offsetFromFP(StackLocation location);
+
+  /// Offset of the shadow parameter relative to the frame pointer, in bytes.
+  /// Should be used only after the frame is finalized.
+  int shadowParameterOffsetFromFP(int paramIndex);
+
+  /// Location of the parameter in the stack frame.
+  ParameterStackLocation getParameterSlot(
+    int paramIndex,
+    RegisterClass registerClass,
+  );
+
+  /// Frame size to allocate, in stack slots (words).
+  /// Should be used only after the frame is finalized.
+  int get frameSizeInSlots;
+
+  /// Reserve [numSlots] spill slots.
+  void reserveSpillSlots(int numSlots) {
+    assert(!_finalized);
+    _usedSpillSlots += numSlots;
+  }
+
+  /// Record reserved stack slots in the safepoint.
+  void recordReservedLocations(Safepoint safepoint);
+
+  /// Allocate a new spill slot.
+  SpillSlot allocateSpillSlot(ValueClass valueClass) {
+    assert(!_finalized);
+    final size = spillSlotSizeInWords(valueClass);
+    final alignment = spillSlotAlignmentInWords(valueClass);
+    _usedSpillSlots = roundUp(_usedSpillSlots, alignment);
+    final slot = valueClass == .simd128
+        ? SimdSpillSlot(_usedSpillSlots)
+        : SpillSlot(_usedSpillSlots);
+    _usedSpillSlots += size;
+    return slot;
+  }
+
+  /// Allocate outgoing argument slots for [instr].
+  void allocateArgumentsSlots(Instruction instr) {
+    final stackSlots = argumentsStackSlots(instr);
+    if (stackSlots > _maxArgumentsStackSlots) {
+      _maxArgumentsStackSlots = stackSlots;
+    }
+  }
+
+  /// Reserved slots holding values of local variables for exception handlers.
+  Iterable<CatchSlotLocation> get catchSlots => _catchSlots.values;
+
+  /// Reserve slots holding values of the given local [variables]
+  /// for exception handlers.
+  ///
+  /// Catch slots hold tagged values and are always included into
+  /// stack maps (see [recordReservedLocations]), so they should be
+  /// initialized when entering the function.
+  ///
+  /// Should be called before any spill slot is allocated.
+  void reserveCatchSlots(Iterable<LocalVariable> variables) {
+    assert(!_finalized);
+    assert(_catchSlots.isEmpty);
+    for (final variable in variables) {
+      assert(!_catchSlots.containsKey(variable));
+      // TODO: unboxed catch slots
+      _catchSlots[variable] = CatchSlotLocation(variable, _usedSpillSlots++);
+    }
+  }
+
+  /// Returns slot holding value of the local [variable]
+  /// for exception handlers.
+  CatchSlotLocation getCatchSlot(LocalVariable variable) =>
+      _catchSlots[variable] ??
+      (throw 'Catch slot is not reserved for variable $variable');
+
+  /// Finish stack frame allocation.
+  /// No new spill slots can be allocated past this point.
+  void finalize() {
+    _finalized = true;
+  }
+}

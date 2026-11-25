@@ -1,0 +1,54 @@
+{
+  "": "Copyright (c) 2017, the Dart project authors. Please see the AUTHORS file",
+  "": "for details. All rights reserved. Use of this source code is governed by a",
+  "": "BSD-style license that can be found in the LICENSE file.",
+  "packages": "../../../../.dart_tool/package_config.json",
+  "suites": [
+    {
+      "name": "sourcemaps",
+      "kind": "Chain",
+      "source": "sourcemaps_test.dart",
+      "root": ".",
+      "status": "sourcemaps.status",
+      "pattern": [
+        "/sourcemap/testfiles/.*\\.dart$",
+        "/sourcemap/testfiles/.*\\.unformatteddart$"
+      ],
+      "exclude": []
+    },
+    {
+      "name": "sourcemaps_canary",
+      "kind": "Chain",
+      "source": "sourcemaps_canary_test.dart",
+      "root": ".",
+      "status": "sourcemaps_canary.status",
+      "pattern": [
+        "/sourcemap/testfiles/.*\\.dart$",
+        "/sourcemap/testfiles/.*\\.unformatteddart$"
+      ],
+      "exclude": []
+    },
+    {
+      "name": "stacktrace",
+      "kind": "Chain",
+      "source": "stacktrace_suite.dart",
+      "root": ".",
+      "status": "stacktrace.status",
+      "pattern": [
+        "/sourcemap/stacktrace_testfiles/.*\\.dart$"
+      ],
+      "exclude": []
+    },
+    {
+      "name": "stacktrace_canary",
+      "kind": "Chain",
+      "source": "stacktrace_canary_suite.dart",
+      "root": ".",
+      "status": "stacktrace_canary.status",
+      "pattern": [
+        "/sourcemap/stacktrace_testfiles/.*\\.dart$"
+      ],
+      "exclude": []
+    }
+  ]
+}

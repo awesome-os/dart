@@ -1,0 +1,168 @@
+// Copyright (c) 2022, the Dart project authors. Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+import 'package:analysis_server/src/services/correction/fix.dart';
+import 'package:analysis_server_plugin/edit/dart/correction_producer.dart';
+import 'package:analysis_server_plugin/src/utilities/selection.dart';
+import 'package:analyzer/dart/ast/ast.dart';
+import 'package:analyzer/dart/ast/precedence.dart';
+import 'package:analyzer/dart/ast/token.dart';
+import 'package:analyzer_plugin/utilities/change_builder/change_builder_core.dart';
+import 'package:analyzer_plugin/utilities/fixes/fixes.dart';
+import 'package:analyzer_plugin/utilities/range_factory.dart';
+
+class ConvertToCascade extends ResolvedCorrectionProducer {
+  new({required super.context});
+
+  @override
+  CorrectionApplicability get applicability =>
+      // TODO(applicability): comment on why.
+      CorrectionApplicability.singleLocation;
+
+  @override
+  FixKind get fixKind => DartFixKind.convertToCascade;
+
+  @override
+  Future<void> compute(ChangeBuilder builder) async {
+    var diagnostic = this.diagnostic;
+    if (diagnostic == null) return;
+
+    var diagnosticOffset = diagnostic.problemMessage.offset;
+    var diagnosticLength = diagnostic.problemMessage.length;
+    var diagnosticEnd = diagnosticOffset + diagnosticLength;
+
+    var startNode = unit
+        .select(offset: diagnosticOffset, length: 1)
+        ?.coveringNode;
+    var firstStatement = startNode?.thisOrAncestorOfType<Statement>();
+    if (firstStatement == null) return;
+
+    var parent = firstStatement.parent;
+    List<Statement> statements;
+    if (parent is Block) {
+      statements = parent.statements;
+    } else if (parent is SwitchCase) {
+      statements = parent.statements;
+    } else if (parent is SwitchDefault) {
+      statements = parent.statements;
+    } else if (parent is SwitchPatternCase) {
+      statements = parent.statements;
+    } else {
+      return;
+    }
+
+    var cascadeStatements = statements
+        .where((s) => s.offset >= diagnosticOffset && s.end <= diagnosticEnd)
+        .toList();
+    if (cascadeStatements.isEmpty) return;
+
+    var firstCascadeStatement = cascadeStatements.first;
+    var indexInParent = statements.indexOf(firstCascadeStatement);
+    if (indexInParent > 0) {
+      cascadeStatements.insert(0, statements[indexInParent - 1]);
+    }
+    if (cascadeStatements.length < 2) return;
+
+    for (var index = 1; index < cascadeStatements.length; index++) {
+      var statement = cascadeStatements[index];
+      if (statement is! ExpressionStatement) return;
+
+      Token? previousOperator;
+      Token? semicolon;
+      Expression? initializer;
+      var previous = cascadeStatements[index - 1];
+      if (previous is ExpressionStatement) {
+        semicolon = previous.semicolon;
+        if (index == 1) {
+          previousOperator = _getTargetAndOperator(previous.expression)
+              ?.operator;
+        }
+        if (previous.expression case AssignmentExpression(:var rightHandSide)) {
+          initializer = rightHandSide;
+        }
+      } else if (previous is VariableDeclarationStatement) {
+        // Single variable declaration.
+        if (previous.variables.variables.length != 1) {
+          return;
+        }
+        if (index == 1) {
+          initializer = previous.variables.variables.first.initializer;
+        }
+        semicolon = previous.endToken;
+      } else {
+        return;
+      }
+
+      var expression = statement.expression;
+      var target = _getTargetAndOperator(expression)?.target;
+      if (target == null) return;
+
+      var targetReplacement = expression is CascadeExpression ? '' : '.';
+
+      await builder.addDartFileEdit(file, (builder) {
+        // Parentheses are needed when the initializer would otherwise absorb
+        // the cascade section that now follows it, and, for the first
+        // statement, when the initializer becomes the cascade target but
+        // binds more loosely than the cascade.
+        if (initializer != null &&
+            (_absorbsCascadeSection(initializer) ||
+                (index == 1 && initializer.precedence < Precedence.postfix))) {
+          builder.addSimpleInsertion(initializer.offset, '(');
+          builder.addSimpleInsertion(initializer.end, ')');
+        }
+        if (previousOperator != null) {
+          builder.addSimpleInsertion(previousOperator.offset, '.');
+        }
+        if (semicolon != null) {
+          builder.addDeletion(range.token(semicolon));
+        }
+        builder.addSimpleReplacement(range.node(target), targetReplacement);
+      });
+    }
+  }
+
+  /// Whether appending a cascade section to [expression] would make that
+  /// section part of [expression] rather than of the enclosing cascade.
+  ///
+  /// This happens when [expression] ends with an expression function body,
+  /// which extends as far to the right as possible and so absorbs a following
+  /// `..`. Anything that closes a bracket or ends a block terminates the body
+  /// first, which is why the walk below stops as soon as a child ends before
+  /// its parent does.
+  bool _absorbsCascadeSection(Expression expression) {
+    for (AstNode node = expression; ;) {
+      if (node case FunctionExpression(
+        body: ExpressionFunctionBody(semicolon: null),
+      )) {
+        return true;
+      }
+      AstNode? last;
+      for (var child in node.childEntities) {
+        if (child is AstNode) last = child;
+      }
+      if (last == null || last.end != node.end) return false;
+      node = last;
+    }
+  }
+
+  _TargetAndOperator? _getTargetAndOperator(Expression expression) {
+    if (expression is AssignmentExpression) {
+      var lhs = expression.leftHandSide;
+      if (lhs is PrefixedIdentifier) {
+        return _TargetAndOperator(lhs.prefix, lhs.period);
+      }
+    } else if (expression is MethodInvocation) {
+      return _TargetAndOperator(expression.target, expression.operator);
+    } else if (expression is CascadeExpression) {
+      return _TargetAndOperator(expression.target, null);
+    }
+    return null;
+  }
+}
+
+class _TargetAndOperator {
+  final AstNode? target;
+  final Token? operator;
+  new(this.target, this.operator);
+}

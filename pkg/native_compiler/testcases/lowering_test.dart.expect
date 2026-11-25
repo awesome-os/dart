@@ -1,0 +1,1205 @@
+--- C.
+B0 = EntryBlock()
+  v6 = Constant(null)
+  v1 = Parameter(this)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  DirectCall Object.(v1)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v6)   # RA: (R0)
+
+--- C.typeParameters
+B0 = EntryBlock()
+  v12 = Constant(null)
+  v30 = Constant(<dynamic>)
+  v1 = Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  v2 = Parameter(this)   # RA: param[1] <- ()
+  v3 = Parameter(x)   # RA: param[2] <- ()
+  ParallelMove output(param[2] -> vloc:R0, param[1] -> vloc:param[1], param[0] -> vloc:param[0])
+  v8 = AllocateContext()   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R3)
+  ParallelMove spill(R0 -> stack[0])
+  StoreInstanceField(#context-field:this, v8, v2)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3, stack[0]]}
+  v37 = LoadInstanceField(C.#typeArguments, v2)   # RA: R1 <- (R3)
+  ParallelMove output(param[2] -> R0, R1 -> stack[1])
+  ParallelMove input(vloc:R0 -> R0, vloc:R1 -> R2, NullConstant(null) -> R1)
+  v13 = TypeTest(v3, v37, v12, List<C.T%>)   # RA: R7 <- (R0, R2, R1) temps: [R3, R4, R5, R6, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R0, R1, R2], objects: [R0, R1, R2, stack[0], stack[1]]}
+  ParallelMove output(R7 -> vloc:R7)
+  DirectCall print(v13)   # RA: R0 <- (R7) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0], stack[1]]}
+  ParallelMove output(param[0] -> R0, param[2] -> R1)
+  ParallelMove input(vloc:R1 -> R0, NullConstant(null) -> R2, vloc:R0 -> R1)
+  v16 = TypeTest(v3, v12, v1, List<C.typeParameters.U%>)   # RA: R7 <- (R0, R2, R1) temps: [R3, R4, R5, R6, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R0, R1, R2], objects: [R0, R1, R2, stack[0], stack[1]]}
+  ParallelMove output(R7 -> vloc:R7)
+  DirectCall print(v16)   # RA: R0 <- (R7) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0], stack[1]]}
+  ParallelMove output(param[0] -> R0, param[2] -> R1, stack[1] -> R2)
+  ParallelMove input(vloc:R1 -> R0, vloc:R2 -> R2, vloc:R0 -> R1)
+  v19 = TypeCast(v3, v37, v1, Map<C.T%, C.typeParameters.U%>)   # RA: R0 <- (R0, R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R0, R1, R2], objects: [R0, R1, R2, stack[0]]}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v19)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  v21 = AllocateClosure(fun:0, len:2)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0, param[0] -> R3)
+  StoreInstanceField(#closure-field[0], v21, v1)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3, stack[0]]}
+  ParallelMove output(stack[0] -> R4)
+  StoreInstanceField(#closure-field[1], v21, v8)   # RA: (R0, R4) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3]}
+  DirectCall closure FunctionDeclaration(void local1() {
+  print(C.T%);
+  print(C.typeParameters.U%);
+}) at C.typeParameters(v21)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  v27 = AllocateClosure(delayed:0, fun:1, len:2)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[0] -> R3)
+  StoreInstanceField(#closure-field[1], v27, v1)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  DirectCall closure FunctionDeclaration(void local2<V extends Object?>() {
+  print(Map<C.typeParameters.U%, V%>);
+}) at C.typeParameters(v30, v27)   # RA: R0 <- (-, R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v12)   # RA: (R0)
+
+--- closure FunctionDeclaration(void local1() {
+  print(C.T%);
+  print(C.typeParameters.U%);
+}) at C.typeParameters
+B0 = EntryBlock()
+  v11 = Constant(null)
+  v1 = Parameter(#closure)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  v3 = LoadInstanceField(#closure-field[1], v1)   # RA: R1 <- (R0)
+  v4 = LoadInstanceField(#context-field:this, v3)   # RA: R1 <- (R1)
+  v7 = LoadInstanceField(#closure-field[0], v1)   # RA: R2 <- (R0)
+  ParallelMove output(R2 -> stack[0])
+  LoadInstanceField(#closure-field[1], v1)   # RA: R0 <- (R0)
+  v17 = LoadInstanceField(C.#typeArguments, v4)   # RA: R0 <- (R1)
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v12 = TypeLiteral(C.T%, v17, v11)   # RA: R0 <- (R0, R1)
+  DirectCall print(v12)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(stack[0] -> R2)
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v14 = TypeLiteral(C.typeParameters.U%, v11, v7)   # RA: R0 <- (R1, R2)
+  DirectCall print(v14)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v11)   # RA: (R0)
+
+--- closure FunctionDeclaration(void local2<V extends Object?>() {
+  print(Map<C.typeParameters.U%, V%>);
+}) at C.typeParameters
+B0 = EntryBlock() dominates:(B6, B9, B5)
+  v11 = Constant(#unset-type-args)
+  v21 = Constant(<dynamic>)
+  v27 = Constant(null)
+  v35 = Constant(1)
+  v36 = Constant(2)
+  v1 = Parameter(#functionTypeParameters)   # RA: R0 <- ()
+  v2 = Parameter(#closure)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, R0 -> vloc:R1)
+  v4 = LoadInstanceField(#closure-field[1], v2)   # RA: R2 <- (R0)
+  CompareAndBranch ==(v1, v11, true: B5, false: B6)   # RA: (R1, -)
+B5 = TargetBlock() idom:B0 dominates:(B7, B8)
+  v15 = LoadInstanceField(#closure-field[0], v2)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v15, v11, true: B8, false: B7)   # RA: (R1, -)
+B8 = TargetBlock() idom:B5
+  ParallelMove input(<dynamic> -> R1)
+  Goto(B9)
+B7 = TargetBlock() idom:B5
+  Goto(B9)
+B6 = TargetBlock() idom:B0
+  Goto(B9)
+B9 = JoinBlock(B6, B7, B8) idom:B0
+  v31 = Phi(v1, v15, v21)   # RA: R1 <- (R1, R1, -)
+  v34 = DirectCall _prependTypeArguments(v31, v4, v35, v36)   # RA: R0 <- (R1, R2, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R2)
+  ParallelMove input(NullConstant(null) -> R1, vloc:R2 -> R2)
+  v28 = TypeLiteral(Map<C.typeParameters.U%, V%>, v27, v34)   # RA: R0 <- (R1, R2) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2]}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v28)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v27)   # RA: (R0)
+
+--- G.
+B0 = EntryBlock()
+  v6 = Constant(null)
+  v1 = Parameter(this)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  DirectCall Object.(v1)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v6)   # RA: (R0)
+
+--- G.defaultFunctionTypeArguments
+B0 = EntryBlock()
+  v34 = Constant(null)
+  v1 = Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  v2 = Parameter(this)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, param[0] -> vloc:param[0])
+  v7 = AllocateContext()   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R3)
+  ParallelMove spill(R0 -> stack[0])
+  StoreInstanceField(#context-field:this, v7, v2)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3, stack[0]]}
+  v10 = AllocateClosure(delayed:0, fun:1, len:2)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0, param[0] -> R3)
+  ParallelMove spill(R0 -> stack[1])
+  StoreInstanceField(#closure-field[1], v10, v1)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3, stack[0], stack[1]]}
+  v13 = AllocateClosure(delayed:0, cls:1, fun:2, len:4)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0], stack[1]]}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R1)
+  ParallelMove spill(R0 -> stack[2])
+  v37 = LoadInstanceField(G.#typeArguments, v2)   # RA: R1 <- (R1)
+  ParallelMove output(R1 -> stack[3])
+  StoreInstanceField(#closure-field[1], v13, v37)   # RA: (R0, R1) temps: [R2, R3] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R1, stack[0], stack[1], stack[2], stack[3]]}
+  ParallelMove output(param[0] -> R4)
+  StoreInstanceField(#closure-field[2], v13, v1)   # RA: (R0, R4) temps: [R2, R3] SAFEPT{live: [R0, R1, R2, R3, R4], objects: [R0, R1, R4, stack[0], stack[1], stack[2], stack[3]]}
+  ParallelMove output(stack[0] -> R5)
+  StoreInstanceField(#closure-field[3], v13, v7)   # RA: (R0, R5) temps: [R2, R3] SAFEPT{live: [R0, R1, R2, R3, R4, R5], objects: [R0, R1, R4, R5, stack[0], stack[1], stack[2], stack[3]]}
+  v18 = AllocateClosure(delayed:0, fun:1, len:2)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0], stack[1], stack[2], stack[3]]}
+  ParallelMove output(R0 -> vloc:R0, param[0] -> R3)
+  ParallelMove spill(R0 -> stack[4])
+  StoreInstanceField(#closure-field[1], v18, v1)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3, stack[0], stack[1], stack[2], stack[3], stack[4]]}
+  v21 = AllocateClosure(delayed:0, cls:1, fun:2, len:4)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0], stack[1], stack[2], stack[3], stack[4]]}
+  ParallelMove output(R0 -> vloc:R0, stack[3] -> R3)
+  ParallelMove spill(R0 -> stack[5])
+  StoreInstanceField(#closure-field[1], v21, v37)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[0], stack[1], stack[2], stack[4], stack[5]]}
+  ParallelMove output(param[0] -> R3)
+  StoreInstanceField(#closure-field[2], v21, v1)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[0], stack[1], stack[2], stack[4], stack[5]]}
+  ParallelMove output(stack[0] -> R3)
+  StoreInstanceField(#closure-field[3], v21, v7)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[1], stack[2], stack[4], stack[5]]}
+  ParallelMove output(stack[1] -> R0)
+  DirectCall print(v10)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[2], stack[4], stack[5]]}
+  ParallelMove output(stack[2] -> R1)
+  DirectCall print(v13)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[4], stack[5]]}
+  ParallelMove output(stack[4] -> R1)
+  DirectCall print(v18)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[5]]}
+  ParallelMove output(stack[5] -> R1)
+  DirectCall print(v21)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v34)   # RA: (R0)
+
+--- closure FunctionDeclaration(void local1<V extends Object?>() {
+  print(V%);
+}) at G.defaultFunctionTypeArguments
+B0 = EntryBlock() dominates:(B6, B9, B5)
+  v11 = Constant(#unset-type-args)
+  v21 = Constant(<dynamic>)
+  v27 = Constant(null)
+  v35 = Constant(1)
+  v36 = Constant(2)
+  v1 = Parameter(#functionTypeParameters)   # RA: R0 <- ()
+  v2 = Parameter(#closure)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, R0 -> vloc:R1)
+  v4 = LoadInstanceField(#closure-field[1], v2)   # RA: R2 <- (R0)
+  CompareAndBranch ==(v1, v11, true: B5, false: B6)   # RA: (R1, -)
+B5 = TargetBlock() idom:B0 dominates:(B7, B8)
+  v15 = LoadInstanceField(#closure-field[0], v2)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v15, v11, true: B8, false: B7)   # RA: (R1, -)
+B8 = TargetBlock() idom:B5
+  ParallelMove input(<dynamic> -> R1)
+  Goto(B9)
+B7 = TargetBlock() idom:B5
+  Goto(B9)
+B6 = TargetBlock() idom:B0
+  Goto(B9)
+B9 = JoinBlock(B6, B7, B8) idom:B0
+  v31 = Phi(v1, v15, v21)   # RA: R1 <- (R1, R1, -)
+  v34 = DirectCall _prependTypeArguments(v31, v4, v35, v36)   # RA: R0 <- (R1, R2, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v28 = TypeLiteral(V%, v27, v34)   # RA: R0 <- (R1, R0)
+  DirectCall print(v28)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v27)   # RA: (R0)
+
+--- closure FunctionDeclaration(void local2<V extends G.T%>() {
+  print(V%);
+}) at G.defaultFunctionTypeArguments
+B0 = EntryBlock() dominates:(B10, B13, B9)
+  v15 = Constant(#unset-type-args)
+  v25 = Constant(null)
+  v42 = Constant(1)
+  v43 = Constant(2)
+  v1 = Parameter(#functionTypeParameters)   # RA: R0 <- ()
+  v2 = Parameter(#closure)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, R0 -> vloc:R1)
+  v4 = LoadInstanceField(#closure-field[3], v2)   # RA: R2 <- (R0)
+  v5 = LoadInstanceField(#context-field:this, v4)   # RA: R2 <- (R2)
+  v8 = LoadInstanceField(#closure-field[2], v2)   # RA: R3 <- (R0)
+  ParallelMove output(R3 -> stack[0])
+  CompareAndBranch ==(v1, v15, true: B9, false: B10)   # RA: (R1, -)
+B9 = TargetBlock() idom:B0 dominates:(B11, B12)
+  v19 = LoadInstanceField(#closure-field[0], v2)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v19, v15, true: B12, false: B11)   # RA: (R1, -)
+B12 = TargetBlock() idom:B9
+  v38 = LoadInstanceField(G.#typeArguments, v5)   # RA: R2 <- (R2)
+  ParallelMove input(vloc:R2 -> R2, NullConstant(null) -> R1)
+  v26 = TypeArguments(v38, v25, <G.T%>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2, stack[0]]}
+  ParallelMove output(R0 -> vloc:R1)
+  Goto(B13)
+B11 = TargetBlock() idom:B9
+  Goto(B13)
+B10 = TargetBlock() idom:B0
+  Goto(B13)
+B13 = JoinBlock(B10, B11, B12) idom:B0
+  v37 = Phi(v1, v19, v26)   # RA: R1 <- (R1, R1, R1)
+  ParallelMove output(stack[0] -> R0)
+  v41 = DirectCall _prependTypeArguments(v37, v8, v42, v43)   # RA: R0 <- (R1, R0, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R1)
+  LoadInstanceField(#closure-field[3], v2)   # RA: R1 <- (R1)
+  ParallelMove input(NullConstant(null) -> vloc:R2)
+  v34 = TypeLiteral(V%, v25, v41)   # RA: R0 <- (R2, R0)
+  DirectCall print(v34)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v25)   # RA: (R0)
+
+--- closure FunctionDeclaration(void local3<V extends List<G.defaultFunctionTypeArguments.U%>>() {
+  print(V);
+}) at G.defaultFunctionTypeArguments
+B0 = EntryBlock() dominates:(B6, B9, B5)
+  v11 = Constant(#unset-type-args)
+  v21 = Constant(null)
+  v35 = Constant(1)
+  v36 = Constant(2)
+  v1 = Parameter(#functionTypeParameters)   # RA: R0 <- ()
+  v2 = Parameter(#closure)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, R0 -> vloc:R1)
+  v4 = LoadInstanceField(#closure-field[1], v2)   # RA: R2 <- (R0)
+  ParallelMove output(R2 -> stack[0])
+  CompareAndBranch ==(v1, v11, true: B5, false: B6)   # RA: (R1, -)
+B5 = TargetBlock() idom:B0 dominates:(B7, B8)
+  v15 = LoadInstanceField(#closure-field[0], v2)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v15, v11, true: B8, false: B7)   # RA: (R1, -)
+B8 = TargetBlock() idom:B5
+  ParallelMove output(R2 -> R0)
+  ParallelMove input(NullConstant(null) -> R2, vloc:R0 -> R1)
+  v22 = TypeArguments(v21, v4, <List<G.defaultFunctionTypeArguments.U%>>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2, stack[0]]}
+  ParallelMove output(R0 -> vloc:R1)
+  Goto(B9)
+B7 = TargetBlock() idom:B5
+  Goto(B9)
+B6 = TargetBlock() idom:B0
+  Goto(B9)
+B9 = JoinBlock(B6, B7, B8) idom:B0
+  v31 = Phi(v1, v15, v22)   # RA: R1 <- (R1, R1, R1)
+  ParallelMove output(stack[0] -> R0)
+  v34 = DirectCall _prependTypeArguments(v31, v4, v35, v36)   # RA: R0 <- (R1, R0, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v28 = TypeLiteral(V, v21, v34)   # RA: R0 <- (R1, R0)
+  DirectCall print(v28)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v21)   # RA: (R0)
+
+--- closure FunctionDeclaration(void local4<V extends Map<G.T%, G.defaultFunctionTypeArguments.U%>, W extends V>() {
+  print(W);
+}) at G.defaultFunctionTypeArguments
+B0 = EntryBlock() dominates:(B10, B13, B9)
+  v15 = Constant(#unset-type-args)
+  v33 = Constant(null)
+  v42 = Constant(1)
+  v43 = Constant(3)
+  v1 = Parameter(#functionTypeParameters)   # RA: R0 <- ()
+  v2 = Parameter(#closure)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, R0 -> vloc:R1)
+  v4 = LoadInstanceField(#closure-field[3], v2)   # RA: R2 <- (R0)
+  v5 = LoadInstanceField(#context-field:this, v4)   # RA: R2 <- (R2)
+  v8 = LoadInstanceField(#closure-field[2], v2)   # RA: R3 <- (R0)
+  ParallelMove output(R3 -> stack[0])
+  CompareAndBranch ==(v1, v15, true: B9, false: B10)   # RA: (R1, -)
+B9 = TargetBlock() idom:B0 dominates:(B11, B12)
+  v19 = LoadInstanceField(#closure-field[0], v2)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v19, v15, true: B12, false: B11)   # RA: (R1, -)
+B12 = TargetBlock() idom:B9
+  v38 = LoadInstanceField(G.#typeArguments, v5)   # RA: R2 <- (R2)
+  ParallelMove output(R3 -> R0)
+  ParallelMove input(vloc:R2 -> R2, vloc:R0 -> R1)
+  v25 = TypeArguments(v38, v8, <Map<G.T%, G.defaultFunctionTypeArguments.U%>, Map<G.T%, G.defaultFunctionTypeArguments.U%>>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2, stack[0]]}
+  ParallelMove output(R0 -> vloc:R1)
+  Goto(B13)
+B11 = TargetBlock() idom:B9
+  Goto(B13)
+B10 = TargetBlock() idom:B0
+  Goto(B13)
+B13 = JoinBlock(B10, B11, B12) idom:B0
+  v37 = Phi(v1, v19, v25)   # RA: R1 <- (R1, R1, R1)
+  ParallelMove output(stack[0] -> R0)
+  v41 = DirectCall _prependTypeArguments(v37, v8, v42, v43)   # RA: R0 <- (R1, R0, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R1)
+  LoadInstanceField(#closure-field[3], v2)   # RA: R1 <- (R1)
+  ParallelMove input(NullConstant(null) -> vloc:R2)
+  v34 = TypeLiteral(W, v33, v41)   # RA: R0 <- (R2, R0)
+  DirectCall print(v34)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v33)   # RA: (R0)
+
+--- D.
+B0 = EntryBlock()
+  v6 = Constant(null)
+  v1 = Parameter(this)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  DirectCall Object.(v1)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v6)   # RA: (R0)
+
+--- E.
+B0 = EntryBlock()
+  v6 = Constant(null)
+  v1 = Parameter(this)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  DirectCall D.(v1)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v6)   # RA: (R0)
+
+--- F.
+B0 = EntryBlock()
+  v4 = Constant(null)
+  v1 = Parameter(this)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  DirectCall E.(v1)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v4)   # RA: (R0)
+
+--- test1
+B0 = EntryBlock()
+  Constant(0)
+  v1 = Parameter(a)   # RA: param[0] <- ()
+  v2 = Parameter(b)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R1, param[0] -> vloc:R0)
+  v9 = UnboxInt(v1)   # RA: R0 <- (R0)
+  v10 = UnboxInt(v2)   # RA: R1 <- (R1)
+  v7 = Comparison int & == 0(v9, v10)   # RA: R0 <- (R0, R1)
+  ParallelMove input(vloc:R0 -> R0)
+  Return(v7)   # RA: (R0)
+
+--- test2
+B0 = EntryBlock() dominates:(B9, B11, B8)
+  Constant(0)
+  v13 = Constant("yes")
+  v25 = Constant("no")
+  v28 = Constant(null)
+  v1 = Parameter(a)   # RA: param[0] <- ()
+  v2 = Parameter(b)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R1, param[0] -> vloc:R0)
+  v30 = UnboxInt(v1)   # RA: R0 <- (R0)
+  v31 = UnboxInt(v2)   # RA: R1 <- (R1)
+  v7 = Comparison int & == 0(v30, v31)   # RA: R0 <- (R0, R1)
+  ParallelMove output(R0 -> stack[0])
+  Branch(v7, true: B8, false: B9)   # RA: (R0)
+B8 = TargetBlock() idom:B0
+  DirectCall print(v13)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  Goto(B11)
+B9 = TargetBlock() idom:B0
+  Goto(B11)
+B11 = JoinBlock(B9, B8) idom:B0 dominates:(B21, B23, B20)
+  ParallelMove output(stack[0] -> R0)
+  Branch(v7, true: B20, false: B21)   # RA: (R0)
+B20 = TargetBlock() idom:B11
+  Goto(B23)
+B21 = TargetBlock() idom:B11
+  DirectCall print(v25)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  Goto(B23)
+B23 = JoinBlock(B21, B20) idom:B11
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v28)   # RA: (R0)
+
+--- test3
+B0 = EntryBlock() dominates:(B11, B13, B10)
+  Constant(0)
+  v15 = Constant("yes")
+  v1 = Parameter(a)   # RA: param[0] <- ()
+  v2 = Parameter(b)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R1, param[0] -> vloc:R0)
+  v20 = UnboxInt(v1)   # RA: R0 <- (R0)
+  v21 = UnboxInt(v2)   # RA: R1 <- (R1)
+  v7 = Comparison int & == 0(v20, v21)   # RA: R0 <- (R0, R1)
+  ParallelMove output(R0 -> stack[0])
+  Branch(v7, true: B10, false: B11)   # RA: (R0)
+B10 = TargetBlock() idom:B0
+  DirectCall print(v15)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  Goto(B13)
+B11 = TargetBlock() idom:B0
+  Goto(B13)
+B13 = JoinBlock(B11, B10) idom:B0
+  ParallelMove output(stack[0] -> R0)
+  ParallelMove input(vloc:R0 -> R0)
+  Return(v7)   # RA: (R0)
+
+--- test4
+B0 = EntryBlock() dominates:(B8, B14, B16, B7)
+  v19 = Constant(1)
+  v30 = Constant(2)
+  v33 = Constant(null)
+  v1 = Parameter(a)   # RA: param[0] <- ()
+  v2 = Parameter(b)   # RA: param[1] <- ()
+  v3 = Parameter(c)   # RA: param[2] <- ()
+  ParallelMove output(param[2] -> vloc:R2, param[1] -> vloc:R1, param[0] -> vloc:R0)
+  v35 = UnboxInt(v1)   # RA: R0 <- (R0)
+  v36 = UnboxInt(v2)   # RA: R1 <- (R1)
+  v6 = Comparison int >(v35, v36)   # RA: R0 <- (R0, R1)
+  ParallelMove output(R0 -> stack[0])
+  Branch(v6, true: B7, false: B8)   # RA: (R0)
+B7 = TargetBlock() idom:B0
+  Goto(B16)
+B8 = TargetBlock() idom:B0 dominates:(B12, B11)
+  Branch(v3, true: B11, false: B12)   # RA: (R2)
+B11 = TargetBlock() idom:B8
+  Goto(B16)
+B16 = JoinBlock(B11, B7) idom:B0
+  DirectCall print(v19)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  Goto(B14)
+B12 = TargetBlock() idom:B8
+  Goto(B14)
+B14 = JoinBlock(B12, B16) idom:B0 dominates:(B26, B28, B25)
+  ParallelMove output(stack[0] -> R0)
+  Branch(v6, true: B25, false: B26)   # RA: (R0)
+B25 = TargetBlock() idom:B14
+  DirectCall print(v30)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  Goto(B28)
+B26 = TargetBlock() idom:B14
+  Goto(B28)
+B28 = JoinBlock(B26, B25) idom:B14
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v33)   # RA: (R0)
+
+--- test5
+B0 = EntryBlock() dominates:(B7, B6)
+  Constant(32)
+  v11 = Constant(1)
+  Constant(16)
+  Constant(8)
+  v23 = Constant(2)
+  Constant(257)
+  v37 = Constant(3)
+  v47 = Constant(4)
+  Constant(7)
+  v58 = Constant(5)
+  v62 = Constant(-1)
+  v69 = Constant(UnboxedIntConstant(32))
+  v71 = Constant(UnboxedIntConstant(16))
+  v72 = Constant(UnboxedIntConstant(8))
+  v74 = Constant(UnboxedIntConstant(257))
+  v77 = Constant(UnboxedIntConstant(7))
+  v1 = Parameter(a)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  v68 = UnboxInt(v1)   # RA: R0 <- (R0)
+  CompareAndBranch int & != 0(v68, v69, true: B6, false: B7)   # RA: (R0, -)
+B6 = TargetBlock() idom:B0
+  ParallelMove input(IntConstant(1) -> R0)
+  Return(v11)   # RA: (R0)
+B7 = TargetBlock() idom:B0 dominates:(B19, B18)
+  v15 = BinaryIntOp &(v68, v71)   # RA: R1 <- (R0, -)
+  CompareAndBranch int ==(v15, v72, true: B18, false: B19)   # RA: (R1, -)
+B18 = TargetBlock() idom:B7
+  ParallelMove input(IntConstant(2) -> R0)
+  Return(v23)   # RA: (R0)
+B19 = TargetBlock() idom:B7 dominates:(B33, B32)
+  v29 = BinaryIntOp &(v68, v74)   # RA: R1 <- (R0, -)
+  CompareAndBranch int ==(v29, v74, true: B32, false: B33)   # RA: (R1, -)
+B32 = TargetBlock() idom:B19
+  ParallelMove input(IntConstant(3) -> R0)
+  Return(v37)   # RA: (R0)
+B33 = TargetBlock() idom:B19 dominates:(B43, B42)
+  CompareAndBranch int & != 0(v68, v72, true: B42, false: B43)   # RA: (R0, -)
+B42 = TargetBlock() idom:B33 dominates:(B54, B53)
+  v51 = BinaryIntOp &(v68, v77)   # RA: R0 <- (R0, -)
+  CompareAndBranch int ==(v51, v77, true: B53, false: B54)   # RA: (R0, -)
+B53 = TargetBlock() idom:B42
+  ParallelMove input(IntConstant(-1) -> R0)
+  Return(v62)   # RA: (R0)
+B54 = TargetBlock() idom:B42
+  ParallelMove input(IntConstant(5) -> R0)
+  Return(v58)   # RA: (R0)
+B43 = TargetBlock() idom:B33
+  ParallelMove input(IntConstant(4) -> R0)
+  Return(v47)   # RA: (R0)
+
+--- listLiterals
+B0 = EntryBlock()
+  v5 = Constant(<dynamic>)
+  v6 = Constant(0)
+  v9 = Constant(null)
+  v13 = Constant(<int>)
+  v14 = Constant(1)
+  v15 = Constant(2)
+  v16 = Constant(3)
+  v19 = Constant(4)
+  v20 = Constant(5)
+  v21 = Constant(6)
+  v22 = Constant(7)
+  v23 = Constant(8)
+  v24 = Constant(9)
+  v62 = Constant(UnboxedIntConstant(0))
+  v63 = Constant(UnboxedIntConstant(1))
+  v64 = Constant(UnboxedIntConstant(2))
+  v65 = Constant(UnboxedIntConstant(3))
+  v66 = Constant(UnboxedIntConstant(4))
+  v67 = Constant(UnboxedIntConstant(5))
+  v68 = Constant(UnboxedIntConstant(6))
+  v69 = Constant(UnboxedIntConstant(7))
+  v70 = Constant(UnboxedIntConstant(8))
+  v1 = Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  v2 = Parameter(x)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:param[1], param[0] -> vloc:R0)
+  v7 = DirectCall _GrowableList.(v5, v6)   # RA: R0 <- (-, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v7)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(param[0] -> R1)
+  ParallelMove input(NullConstant(null) -> R2, vloc:R1 -> R1)
+  v10 = TypeArguments(v9, v1, <listLiterals.T%>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2]}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[0])
+  v11 = DirectCall _GrowableList.(v10, v6)   # RA: R0 <- (R0, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v11)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  v17 = DirectCall _GrowableList._literal3(v13, v14, v15, v16)   # RA: R0 <- (-, -, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v17)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  v40 = AllocateArray fixedLengthList(v24)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove input(IntConstant(1) -> vloc:R2)
+  StoreArrayElement(v40, v62, v14)   # RA: (R0, -, R2) temps: [R1, R3, R25] SAFEPT{live: [R0, R1, R3], objects: [R0, stack[0]]}
+  ParallelMove input(IntConstant(2) -> vloc:R3)
+  StoreArrayElement(v40, v63, v15)   # RA: (R0, -, R3) temps: [R2, R1, R25] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[0]]}
+  ParallelMove input(IntConstant(3) -> vloc:R3)
+  StoreArrayElement(v40, v64, v16)   # RA: (R0, -, R3) temps: [R1, R2, R25] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[0]]}
+  ParallelMove input(IntConstant(4) -> vloc:R2)
+  StoreArrayElement(v40, v65, v19)   # RA: (R0, -, R2) temps: [R1, R3, R25] SAFEPT{live: [R0, R1, R3], objects: [R0, stack[0]]}
+  ParallelMove input(IntConstant(5) -> vloc:R1)
+  StoreArrayElement(v40, v66, v20)   # RA: (R0, -, R1) temps: [R2, R3, R25] SAFEPT{live: [R0, R2, R3], objects: [R0, stack[0]]}
+  ParallelMove input(IntConstant(6) -> vloc:R1)
+  StoreArrayElement(v40, v67, v21)   # RA: (R0, -, R1) temps: [R2, R3, R25] SAFEPT{live: [R0, R2, R3], objects: [R0, stack[0]]}
+  ParallelMove input(IntConstant(7) -> vloc:R1)
+  StoreArrayElement(v40, v68, v22)   # RA: (R0, -, R1) temps: [R2, R3, R25] SAFEPT{live: [R0, R2, R3], objects: [R0, stack[0]]}
+  ParallelMove input(IntConstant(8) -> vloc:R1)
+  StoreArrayElement(v40, v69, v23)   # RA: (R0, -, R1) temps: [R2, R3, R25] SAFEPT{live: [R0, R2, R3], objects: [R0, stack[0]]}
+  ParallelMove input(IntConstant(9) -> vloc:R1)
+  StoreArrayElement(v40, v70, v24)   # RA: (R0, -, R1) temps: [R2, R3, R25] SAFEPT{live: [R0, R2, R3], objects: [R0, stack[0]]}
+  v50 = DirectCall _GrowableList._literal(v13, v40)   # RA: R0 <- (-, R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v50)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  v51 = AllocateArray fixedLengthList(v24)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R2, param[1] -> R3)
+  StoreArrayElement(v51, v62, v2)   # RA: (R2, -, R3) temps: [R0, R1, R25] SAFEPT{live: [R0, R1, R2, R3], objects: [R2, R3, stack[0]]}
+  StoreArrayElement(v51, v63, v2)   # RA: (R2, -, R3) temps: [R0, R1, R25] SAFEPT{live: [R0, R1, R2, R3], objects: [R2, R3, stack[0]]}
+  StoreArrayElement(v51, v64, v2)   # RA: (R2, -, R3) temps: [R0, R1, R25] SAFEPT{live: [R0, R1, R2, R3], objects: [R2, R3, stack[0]]}
+  StoreArrayElement(v51, v65, v2)   # RA: (R2, -, R3) temps: [R0, R1, R25] SAFEPT{live: [R0, R1, R2, R3], objects: [R2, R3, stack[0]]}
+  StoreArrayElement(v51, v66, v2)   # RA: (R2, -, R3) temps: [R0, R1, R25] SAFEPT{live: [R0, R1, R2, R3], objects: [R2, R3, stack[0]]}
+  StoreArrayElement(v51, v67, v2)   # RA: (R2, -, R3) temps: [R0, R1, R25] SAFEPT{live: [R0, R1, R2, R3], objects: [R2, R3, stack[0]]}
+  StoreArrayElement(v51, v68, v2)   # RA: (R2, -, R3) temps: [R1, R0, R25] SAFEPT{live: [R0, R1, R2, R3], objects: [R2, R3, stack[0]]}
+  StoreArrayElement(v51, v69, v2)   # RA: (R2, -, R3) temps: [R1, R0, R25] SAFEPT{live: [R0, R1, R2, R3], objects: [R2, R3, stack[0]]}
+  StoreArrayElement(v51, v70, v2)   # RA: (R2, -, R3) temps: [R1, R0, R25] SAFEPT{live: [R0, R1, R2], objects: [R2, stack[0]]}
+  ParallelMove output(stack[0] -> R0)
+  v61 = DirectCall _GrowableList._literal(v10, v51)   # RA: R0 <- (R0, R2) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v61)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v9)   # RA: (R0)
+
+--- mapLiterals
+B0 = EntryBlock()
+  v8 = Constant(<dynamic, dynamic>)
+  v11 = Constant(null)
+  v15 = Constant(<String, String>)
+  v16 = Constant("a")
+  v17 = Constant("aa")
+  v18 = Constant("b")
+  v19 = Constant("bb")
+  v31 = Constant(ListConstant(const <dynamic>[]))
+  v34 = Constant(4)
+  Constant(0)
+  Constant(1)
+  Constant(2)
+  Constant(3)
+  v51 = Constant(UnboxedIntConstant(0))
+  v52 = Constant(UnboxedIntConstant(1))
+  v53 = Constant(UnboxedIntConstant(2))
+  v54 = Constant(UnboxedIntConstant(3))
+  v1 = Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  v2 = Parameter(key)   # RA: param[1] <- ()
+  v3 = Parameter(value)   # RA: param[2] <- ()
+  v4 = Parameter(key2)   # RA: param[3] <- ()
+  v5 = Parameter(value2)   # RA: param[4] <- ()
+  ParallelMove output(param[4] -> vloc:R0, param[3] -> vloc:param[3], param[2] -> vloc:param[2], param[1] -> vloc:param[1], param[0] -> vloc:param[0])
+  v32 = DirectCall Map._fromLiteral(v8, v31)   # RA: R0 <- (-, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v32)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(param[0] -> R1)
+  ParallelMove input(NullConstant(null) -> R2, vloc:R1 -> R1)
+  v12 = TypeArguments(v11, v1, <mapLiterals.S%, mapLiterals.T%>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2]}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[0])
+  v33 = DirectCall Map._fromLiteral(v12, v31)   # RA: R0 <- (R0, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v33)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  v35 = AllocateArray fixedLengthList(v34)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R1)
+  ParallelMove input(StringConstant("a") -> vloc:R2)
+  StoreArrayElement(v35, v51, v16)   # RA: (R1, -, R2) temps: [R0, R3, R25] SAFEPT{live: [R0, R1, R3], objects: [R1, stack[0]]}
+  ParallelMove input(StringConstant("aa") -> vloc:R3)
+  StoreArrayElement(v35, v52, v17)   # RA: (R1, -, R3) temps: [R2, R0, R25] SAFEPT{live: [R0, R1, R2], objects: [R1, stack[0]]}
+  ParallelMove input(StringConstant("b") -> vloc:R3)
+  StoreArrayElement(v35, v53, v18)   # RA: (R1, -, R3) temps: [R2, R0, R25] SAFEPT{live: [R0, R1, R2], objects: [R1, stack[0]]}
+  ParallelMove input(StringConstant("bb") -> vloc:R0)
+  StoreArrayElement(v35, v54, v19)   # RA: (R1, -, R0) temps: [R2, R3, R25] SAFEPT{live: [R1, R2, R3], objects: [R1, stack[0]]}
+  v44 = DirectCall Map._fromLiteral(v15, v35)   # RA: R0 <- (-, R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v44)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(param[2] -> R1)
+  v25 = ClosureCall(v3)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[1])
+  v45 = AllocateArray fixedLengthList(v34)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0], stack[1]]}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R3)
+  StoreArrayElement(v45, v51, v2)   # RA: (R0, -, R3) temps: [R1, R2, R25] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[0], stack[1]]}
+  ParallelMove output(stack[1] -> R3)
+  StoreArrayElement(v45, v52, v25)   # RA: (R0, -, R3) temps: [R1, R2, R25] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[0]]}
+  ParallelMove output(param[3] -> R3)
+  StoreArrayElement(v45, v53, v4)   # RA: (R0, -, R3) temps: [R2, R1, R25] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[0]]}
+  ParallelMove output(param[4] -> R3)
+  StoreArrayElement(v45, v54, v5)   # RA: (R0, -, R3) temps: [R2, R1, R25] SAFEPT{live: [R0, R1, R2], objects: [R0, stack[0]]}
+  ParallelMove output(stack[0] -> R1)
+  v50 = DirectCall Map._fromLiteral(v12, v45)   # RA: R0 <- (R1, R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v50)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v11)   # RA: (R0)
+
+--- recordLiterals
+B0 = EntryBlock()
+  v30 = Constant(null)
+  Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  v2 = Parameter(a)   # RA: param[1] <- ()
+  v3 = Parameter(b)   # RA: param[2] <- ()
+  v4 = Parameter(c)   # RA: param[3] <- ()
+  ParallelMove output(param[3] -> vloc:R0, param[2] -> vloc:param[2], param[1] -> vloc:param[1])
+  v32 = AllocateRecord (int)()   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R3)
+  StoreInstanceField(#record-field[0], v32, v2)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3]}
+  DirectCall print(v32)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  v34 = AllocateRecord (int, String, recordLiterals.T%)()   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R3)
+  StoreInstanceField(#record-field[0], v34, v2)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3]}
+  ParallelMove output(param[2] -> R4)
+  StoreInstanceField(#record-field[1], v34, v3)   # RA: (R0, R4) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3, R4], objects: [R0, R3, R4]}
+  ParallelMove output(param[3] -> R5)
+  StoreInstanceField(#record-field[2], v34, v4)   # RA: (R0, R5) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3, R4, R5], objects: [R0, R3, R4, R5]}
+  DirectCall print(v34)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  v38 = AllocateRecord ({recordLiterals.T% bar, String foo})()   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[3] -> R3)
+  StoreInstanceField(#record-field[0:bar], v38, v4)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3]}
+  ParallelMove output(param[2] -> R4)
+  StoreInstanceField(#record-field[1:foo], v38, v3)   # RA: (R0, R4) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3, R4], objects: [R0, R3, R4]}
+  DirectCall print(v38)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  v41 = AllocateRecord (int, {recordLiterals.T% bar, String foo})()   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[1] -> R3)
+  StoreInstanceField(#record-field[0], v41, v2)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  ParallelMove output(param[3] -> R3)
+  StoreInstanceField(#record-field[1:bar], v41, v4)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  ParallelMove output(param[2] -> R3)
+  StoreInstanceField(#record-field[2:foo], v41, v3)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  DirectCall print(v41)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v30)   # RA: (R0)
+
+--- stringInterpolation
+B0 = EntryBlock()
+  v7 = Constant("Hey, x=")
+  v9 = Constant(", s=")
+  v11 = Constant(", o=")
+  v15 = Constant(null)
+  v18 = Constant(6)
+  Constant(0)
+  Constant(1)
+  Constant(2)
+  Constant(3)
+  Constant(4)
+  Constant(5)
+  v33 = Constant(UnboxedIntConstant(0))
+  v34 = Constant(UnboxedIntConstant(1))
+  v35 = Constant(UnboxedIntConstant(2))
+  v36 = Constant(UnboxedIntConstant(3))
+  v37 = Constant(UnboxedIntConstant(4))
+  v38 = Constant(UnboxedIntConstant(5))
+  v1 = Parameter(x)   # RA: param[0] <- ()
+  v2 = Parameter(s)   # RA: param[1] <- ()
+  v3 = Parameter(o)   # RA: param[2] <- ()
+  ParallelMove output(param[2] -> vloc:R0, param[1] -> vloc:param[1], param[0] -> vloc:param[0])
+  v17 = DirectCall _StringBase._interpolateSingle(v3)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v17)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  v19 = AllocateArray fixedLengthList(v18)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove input(StringConstant("Hey, x=") -> vloc:R1)
+  StoreArrayElement(v19, v33, v7)   # RA: (R0, -, R1) temps: [R2, R3, R25] SAFEPT{live: [R0, R2, R3], objects: [R0]}
+  ParallelMove output(param[0] -> R3)
+  StoreArrayElement(v19, v34, v1)   # RA: (R0, -, R3) temps: [R1, R2, R25] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  ParallelMove input(StringConstant(", s=") -> vloc:R1)
+  StoreArrayElement(v19, v35, v9)   # RA: (R0, -, R1) temps: [R2, R3, R25] SAFEPT{live: [R0, R2, R3], objects: [R0]}
+  ParallelMove output(param[1] -> R3)
+  StoreArrayElement(v19, v36, v2)   # RA: (R0, -, R3) temps: [R1, R2, R25] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  ParallelMove input(StringConstant(", o=") -> vloc:R1)
+  StoreArrayElement(v19, v37, v11)   # RA: (R0, -, R1) temps: [R2, R3, R25] SAFEPT{live: [R0, R2, R3], objects: [R0]}
+  ParallelMove output(param[2] -> R3)
+  StoreArrayElement(v19, v38, v3)   # RA: (R0, -, R3) temps: [R1, R2, R25] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  v32 = DirectCall _StringBase._interpolate(v19)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v32)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v15)   # RA: (R0)
+
+--- nestedFunctionTypeParameters1
+B0 = EntryBlock()
+  v7 = Constant(<String>)
+  v10 = Constant(null)
+  v1 = Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  v4 = AllocateClosure(delayed:0, fun:1, len:2)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[0] -> R3)
+  StoreInstanceField(#closure-field[1], v4, v1)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  DirectCall closure FunctionDeclaration(void nested1<T extends Object?>() {
+  void nested2<U extends Object?>() {
+    print(nestedFunctionTypeParameters1.S%);
+    print(T%);
+    print(U%);
+  }
+  nested2<int>();
+}) at nestedFunctionTypeParameters1(v7, v4)   # RA: R0 <- (-, R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v10)   # RA: (R0)
+
+--- closure FunctionDeclaration(void nested1<T extends Object?>() {
+  void nested2<U extends Object?>() {
+    print(nestedFunctionTypeParameters1.S%);
+    print(T%);
+    print(U%);
+  }
+  nested2<int>();
+}) at nestedFunctionTypeParameters1
+B0 = EntryBlock() dominates:(B6, B9, B5)
+  v11 = Constant(#unset-type-args)
+  v21 = Constant(<dynamic>)
+  v30 = Constant(<int>)
+  v33 = Constant(null)
+  v40 = Constant(1)
+  v41 = Constant(2)
+  v1 = Parameter(#functionTypeParameters)   # RA: R0 <- ()
+  v2 = Parameter(#closure)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, R0 -> vloc:R1)
+  v4 = LoadInstanceField(#closure-field[1], v2)   # RA: R2 <- (R0)
+  CompareAndBranch ==(v1, v11, true: B5, false: B6)   # RA: (R1, -)
+B5 = TargetBlock() idom:B0 dominates:(B7, B8)
+  v15 = LoadInstanceField(#closure-field[0], v2)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v15, v11, true: B8, false: B7)   # RA: (R1, -)
+B8 = TargetBlock() idom:B5
+  ParallelMove input(<dynamic> -> R1)
+  Goto(B9)
+B7 = TargetBlock() idom:B5
+  Goto(B9)
+B6 = TargetBlock() idom:B0
+  Goto(B9)
+B9 = JoinBlock(B6, B7, B8) idom:B0
+  v35 = Phi(v1, v15, v21)   # RA: R1 <- (R1, R1, -)
+  v39 = DirectCall _prependTypeArguments(v35, v4, v40, v41)   # RA: R0 <- (R1, R2, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[0])
+  v27 = AllocateClosure(delayed:0, fun:1, len:2)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0, stack[0] -> R3)
+  StoreInstanceField(#closure-field[1], v27, v39)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  DirectCall closure FunctionDeclaration(void nested2<U extends Object?>() {
+  print(nestedFunctionTypeParameters1.S%);
+  print(T%);
+  print(U%);
+}) at nestedFunctionTypeParameters1(v30, v27)   # RA: R0 <- (-, R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v33)   # RA: (R0)
+
+--- closure FunctionDeclaration(void nested2<U extends Object?>() {
+  print(nestedFunctionTypeParameters1.S%);
+  print(T%);
+  print(U%);
+}) at nestedFunctionTypeParameters1
+B0 = EntryBlock() dominates:(B6, B9, B5)
+  v11 = Constant(#unset-type-args)
+  v21 = Constant(<dynamic>)
+  v27 = Constant(null)
+  v39 = Constant(2)
+  v40 = Constant(3)
+  v1 = Parameter(#functionTypeParameters)   # RA: R0 <- ()
+  v2 = Parameter(#closure)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, R0 -> vloc:R1)
+  v4 = LoadInstanceField(#closure-field[1], v2)   # RA: R2 <- (R0)
+  CompareAndBranch ==(v1, v11, true: B5, false: B6)   # RA: (R1, -)
+B5 = TargetBlock() idom:B0 dominates:(B7, B8)
+  v15 = LoadInstanceField(#closure-field[0], v2)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v15, v11, true: B8, false: B7)   # RA: (R1, -)
+B8 = TargetBlock() idom:B5
+  ParallelMove input(<dynamic> -> R1)
+  Goto(B9)
+B7 = TargetBlock() idom:B5
+  Goto(B9)
+B6 = TargetBlock() idom:B0
+  Goto(B9)
+B9 = JoinBlock(B6, B7, B8) idom:B0
+  v35 = Phi(v1, v15, v21)   # RA: R1 <- (R1, R1, -)
+  v38 = DirectCall _prependTypeArguments(v35, v4, v39, v40)   # RA: R0 <- (R1, R2, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[0])
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v28 = TypeLiteral(nestedFunctionTypeParameters1.S%, v27, v38)   # RA: R1 <- (R1, R0)
+  DirectCall print(v28)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(stack[0] -> R2)
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v30 = TypeLiteral(T%, v27, v38)   # RA: R0 <- (R1, R2)
+  DirectCall print(v30)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(stack[0] -> R2)
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v32 = TypeLiteral(U%, v27, v38)   # RA: R0 <- (R1, R2)
+  DirectCall print(v32)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v27)   # RA: (R0)
+
+--- nestedFunctionTypeParameters2
+B0 = EntryBlock()
+  v9 = Constant(null)
+  v1 = Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  v4 = AllocateClosure(fun:0, len:1)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0, param[0] -> R3)
+  StoreInstanceField(#closure-field[0], v4, v1)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  DirectCall closure FunctionDeclaration(void nested1() {
+  void nested2<T extends Object?>() {
+    print(nestedFunctionTypeParameters2.S%);
+    print(T%);
+  }
+  nested2<int>();
+}) at nestedFunctionTypeParameters2(v4)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v9)   # RA: (R0)
+
+--- closure FunctionDeclaration(void nested1() {
+  void nested2<T extends Object?>() {
+    print(nestedFunctionTypeParameters2.S%);
+    print(T%);
+  }
+  nested2<int>();
+}) at nestedFunctionTypeParameters2
+B0 = EntryBlock()
+  v8 = Constant(<int>)
+  v11 = Constant(null)
+  v1 = Parameter(#closure)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  v3 = LoadInstanceField(#closure-field[0], v1)   # RA: R0 <- (R0)
+  ParallelMove output(R0 -> stack[0])
+  v5 = AllocateClosure(delayed:0, fun:1, len:2)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0, stack[0] -> R3)
+  StoreInstanceField(#closure-field[1], v5, v3)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2], objects: [R0]}
+  DirectCall closure FunctionDeclaration(void nested2<T extends Object?>() {
+  print(nestedFunctionTypeParameters2.S%);
+  print(T%);
+}) at nestedFunctionTypeParameters2(v8, v5)   # RA: R0 <- (-, R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v11)   # RA: (R0)
+
+--- closure FunctionDeclaration(void nested2<T extends Object?>() {
+  print(nestedFunctionTypeParameters2.S%);
+  print(T%);
+}) at nestedFunctionTypeParameters2
+B0 = EntryBlock() dominates:(B6, B9, B5)
+  v11 = Constant(#unset-type-args)
+  v21 = Constant(<dynamic>)
+  v27 = Constant(null)
+  v37 = Constant(1)
+  v38 = Constant(2)
+  v1 = Parameter(#functionTypeParameters)   # RA: R0 <- ()
+  v2 = Parameter(#closure)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R0, R0 -> vloc:R1)
+  v4 = LoadInstanceField(#closure-field[1], v2)   # RA: R2 <- (R0)
+  CompareAndBranch ==(v1, v11, true: B5, false: B6)   # RA: (R1, -)
+B5 = TargetBlock() idom:B0 dominates:(B7, B8)
+  v15 = LoadInstanceField(#closure-field[0], v2)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v15, v11, true: B8, false: B7)   # RA: (R1, -)
+B8 = TargetBlock() idom:B5
+  ParallelMove input(<dynamic> -> R1)
+  Goto(B9)
+B7 = TargetBlock() idom:B5
+  Goto(B9)
+B6 = TargetBlock() idom:B0
+  Goto(B9)
+B9 = JoinBlock(B6, B7, B8) idom:B0
+  v33 = Phi(v1, v15, v21)   # RA: R1 <- (R1, R1, -)
+  v36 = DirectCall _prependTypeArguments(v33, v4, v37, v38)   # RA: R0 <- (R1, R2, -, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[0])
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v28 = TypeLiteral(nestedFunctionTypeParameters2.S%, v27, v36)   # RA: R1 <- (R1, R0)
+  DirectCall print(v28)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(stack[0] -> R2)
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  v30 = TypeLiteral(T%, v27, v36)   # RA: R0 <- (R1, R2)
+  DirectCall print(v30)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v27)   # RA: (R0)
+
+--- allocateObjects
+B0 = EntryBlock()
+  v4 = Constant(<int, double>)
+  v11 = Constant(null)
+  v20 = Constant(<String, int, double>)
+  v22 = Constant(<String, num, double>)
+  v1 = Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  ParallelMove input(<int, double> -> R1)
+  v5 = AllocateObject D<int, double>(v4)   # RA: R0 <- (R1) temps: [R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1], objects: [R1]}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[0])
+  DirectCall D.(v5)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(stack[0] -> R1)
+  DirectCall print(v5)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(<String, int, double> -> R1)
+  v8 = AllocateObject E<int, double>(v20)   # RA: R0 <- (R1) temps: [R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1], objects: [R1]}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[1])
+  DirectCall E.(v8)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[1]]}
+  ParallelMove output(stack[1] -> R1)
+  DirectCall print(v8)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(param[0] -> R0)
+  ParallelMove input(NullConstant(null) -> R2, vloc:R0 -> R1)
+  TypeArguments(v11, v1, <allocateObjects.K%, List<allocateObjects.K%>>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2]}
+  ParallelMove output(param[0] -> R1)
+  ParallelMove input(NullConstant(null) -> R2, vloc:R1 -> R1)
+  v21 = TypeArguments(v11, v1, <String, allocateObjects.K%, List<allocateObjects.K%>>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2]}
+  ParallelMove output(R0 -> vloc:R1)
+  ParallelMove input(vloc:R1 -> R1)
+  v13 = AllocateObject E<allocateObjects.K%, List<allocateObjects.K%>>(v21)   # RA: R0 <- (R1) temps: [R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1], objects: [R1]}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[3])
+  DirectCall E.(v13)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[3]]}
+  ParallelMove output(stack[3] -> R1)
+  DirectCall print(v13)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(<String, num, double> -> R1)
+  v23 = AllocateObject F(v22)   # RA: R0 <- (R1) temps: [R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1], objects: [R1]}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[4])
+  DirectCall F.(v23)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[4]]}
+  ParallelMove output(stack[4] -> R1)
+  DirectCall print(v23)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v11)   # RA: (R0)
+
+--- instantiateClosures
+B0 = EntryBlock()
+  v6 = Constant(<int>)
+  v10 = Constant(null)
+  v1 = Parameter(#functionTypeParameters)   # RA: param[0] <- ()
+  v2 = Parameter(foo)   # RA: param[1] <- ()
+  v3 = Parameter(bar)   # RA: param[2] <- ()
+  ParallelMove output(param[2] -> vloc:R0, param[1] -> vloc:R1, param[0] -> vloc:param[0])
+  v22 = DirectCall _instantiateClosure(v2, v6)   # RA: R0 <- (R1, -) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v22)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(param[0] -> R0)
+  ParallelMove input(NullConstant(null) -> R2, vloc:R0 -> R1)
+  v11 = TypeArguments(v10, v1, <instantiateClosures.T1%, String>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2]}
+  ParallelMove output(R0 -> vloc:R0, param[2] -> R1)
+  v23 = DirectCall _instantiateClosure(v3, v11)   # RA: R0 <- (R1, R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v23)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(param[0] -> R1)
+  ParallelMove input(NullConstant(null) -> R2, vloc:R1 -> R1)
+  v15 = TypeArguments(v10, v1, <int, instantiateClosures.T2%>)   # RA: R0 <- (R2, R1) temps: [R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [R1, R2], objects: [R1, R2]}
+  ParallelMove output(R0 -> vloc:R0, param[2] -> R1)
+  v24 = DirectCall _instantiateClosure(v3, v15)   # RA: R0 <- (R1, R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  DirectCall print(v24)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v10)   # RA: (R0)
+
+--- lateLocalVar1
+B0 = EntryBlock() dominates:(B7, B9, B6)
+  v3 = Constant(#sentinel)
+  v11 = Constant(10)
+  v26 = Constant("i")
+  v33 = Constant(null)
+  v1 = Parameter(c1)   # RA: param[0] <- ()
+  v2 = Parameter(c2)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R1, param[0] -> vloc:R0)
+  Branch(v1, true: B6, false: B7)   # RA: (R0)
+B6 = TargetBlock() idom:B0
+  ParallelMove input(IntConstant(10) -> R0)
+  Goto(B9)
+B7 = TargetBlock() idom:B0
+  ParallelMove input(#sentinel -> R0)
+  Goto(B9)
+B9 = JoinBlock(B7, B6) idom:B0 dominates:(B16, B18, B15)
+  v35 = Phi(v3, v11)   # RA: R0 <- (-, -)
+  Branch(v2, true: B15, false: B16)   # RA: (R1)
+B15 = TargetBlock() idom:B9 dominates:(B21, B20)
+  CompareAndBranch ==(v35, v3, true: B20, false: B21)   # RA: (R0, -)
+B21 = TargetBlock() idom:B15
+  v30 = TypeCast(v35, int, unchecked)   # RA: R0 <- (R0) SAFEPT{live: [R0], objects: [R0]}
+  DirectCall print(v30)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  Goto(B18)
+B16 = TargetBlock() idom:B9
+  Goto(B18)
+B18 = JoinBlock(B16, B21) idom:B9
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v33)   # RA: (R0)
+B20 = TargetBlock() idom:B15
+  DirectCall LateError._throwLocalNotInitialized(v26)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  Unreachable(message: "LateError._throwLocalNotInitialized should not return")
+
+--- lateLocalVar2
+B0 = EntryBlock() dominates:(B7, B9, B6)
+  v3 = Constant(#sentinel)
+  v11 = Constant(10)
+  v17 = Constant("i")
+  v27 = Constant(20)
+  v47 = Constant(null)
+  Constant(true)
+  v1 = Parameter(c1)   # RA: param[0] <- ()
+  v2 = Parameter(c2)   # RA: param[1] <- ()
+  ParallelMove output(param[1] -> vloc:R1, param[0] -> vloc:R0)
+  Branch(v1, true: B6, false: B7)   # RA: (R0)
+B6 = TargetBlock() idom:B0
+  ParallelMove input(IntConstant(10) -> R0)
+  Goto(B9)
+B7 = TargetBlock() idom:B0
+  ParallelMove input(#sentinel -> R0)
+  Goto(B9)
+B9 = JoinBlock(B7, B6) idom:B0 dominates:(B23, B25, B22)
+  v49 = Phi(v3, v11)   # RA: R0 <- (-, -)
+  Branch(v2, true: B22, false: B23)   # RA: (R1)
+B22 = TargetBlock() idom:B9 dominates:(B29, B28)
+  CompareAndBranch ==(v49, v3, true: B28, false: B29)   # RA: (R0, -)
+B28 = TargetBlock() idom:B22
+  ParallelMove input(IntConstant(20) -> R0)
+  Goto(B25)
+B23 = TargetBlock() idom:B9
+  Goto(B25)
+B25 = JoinBlock(B23, B28) idom:B9 dominates:(B37, B36)
+  v50 = Phi(v49, v27)   # RA: R0 <- (R0, -)
+  CompareAndBranch ==(v50, v3, true: B36, false: B37)   # RA: (R0, -)
+B37 = TargetBlock() idom:B25
+  v45 = TypeCast(v50, int, unchecked)   # RA: R0 <- (R0) SAFEPT{live: [R0], objects: [R0]}
+  DirectCall print(v45)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v47)   # RA: (R0)
+B29 = TargetBlock() idom:B22
+  DirectCall LateError._throwLocalAlreadyInitialized(v17)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  Unreachable(message: "LateError._throwLocalAlreadyInitialized should not return")
+B36 = TargetBlock() idom:B25
+  DirectCall LateError._throwLocalNotInitialized(v17)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  Unreachable(message: "LateError._throwLocalNotInitialized should not return")
+
+--- lateLocalVar3
+B0 = EntryBlock() dominates:(B13, B14, B12)
+  v7 = Constant(#sentinel)
+  v25 = Constant("i")
+  v33 = Constant(null)
+  Parameter(c1)   # RA: param[0] <- ()
+  Parameter(c2)   # RA: param[1] <- ()
+  v3 = AllocateContext()   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  ParallelMove spill(R0 -> stack[0])
+  v4 = AllocateClosure(len:1)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0, stack[0] -> R3)
+  StoreInstanceField(#closure-field[0], v4, v3)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3, stack[0]]}
+  StoreInstanceField(#context-field:#i#initializer, v3, v4)   # RA: (R3, R0) temps: [R1, R2] SAFEPT{live: [R1, R2, R3], objects: [R3, stack[0]]}
+  ParallelMove input(#sentinel -> vloc:R0)
+  StoreInstanceField(#context-field:i, v3, v7)   # RA: (R3, R0) temps: [R1, R2] SAFEPT{live: [R1, R2, R3], objects: [R3, stack[0]]}
+  v9 = AllocateClosure(len:1)   # RA: R0 <- () temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0, stack[0] -> R3)
+  StoreInstanceField(#closure-field[0], v9, v3)   # RA: (R0, R3) temps: [R1, R2] SAFEPT{live: [R0, R1, R2, R3], objects: [R0, R3, stack[0]]}
+  StoreInstanceField(#context-field:init, v3, v9)   # RA: (R3, R0) temps: [R1, R2] SAFEPT{live: [R1, R2, R3], objects: [R3, stack[0]]}
+  v15 = LoadInstanceField(#context-field:i, v3)   # RA: R0 <- (R3)
+  CompareAndBranch ==(v15, v7, true: B12, false: B13)   # RA: (R0, -)
+B12 = TargetBlock() idom:B0 dominates:(B21, B20)
+  v18 = LoadInstanceField(#context-field:#i#initializer, v3)   # RA: R0 <- (R3)
+  v19 = ClosureCall(v18)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0, stack[0] -> R1)
+  v22 = LoadInstanceField(#context-field:i, v3)   # RA: R2 <- (R1)
+  CompareAndBranch ==(v22, v7, true: B20, false: B21)   # RA: (R2, -)
+B20 = TargetBlock() idom:B12
+  StoreInstanceField(#context-field:i, v3, v19)   # RA: (R1, R0) temps: [R2, R3] SAFEPT{live: [R1, R2, R3], objects: [R1, stack[0]]}
+  Goto(B14)
+B13 = TargetBlock() idom:B0
+  ParallelMove control(R3 -> R1)
+  Goto(B14)
+B14 = JoinBlock(B13, B20) idom:B0
+  v30 = LoadInstanceField(#context-field:i, v3)   # RA: R0 <- (R1)
+  v31 = TypeCast(v30, int, unchecked)   # RA: R0 <- (R0) SAFEPT{live: [R0], objects: [R0]}
+  DirectCall print(v31)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v33)   # RA: (R0)
+B21 = TargetBlock() idom:B12
+  DirectCall LateError._throwLocalAssignedDuringInitialization(v25)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  Unreachable(message: "LateError._throwLocalAssignedDuringInitialization should not return")
+
+--- closure FunctionDeclaration(int #i#initializer() => let final int? #0 = let final int Function()? #1 = init in #1 == null ?{int?} null : #1{int Function()}() in #0 == null ?{int} 10 : #0{int};) at lateLocalVar3
+B0 = EntryBlock() dominates:(B10, B13, B9)
+  v7 = Constant(null)
+  v27 = Constant(10)
+  v1 = Parameter(#closure)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  v3 = LoadInstanceField(#closure-field[0], v1)   # RA: R0 <- (R0)
+  v4 = LoadInstanceField(#context-field:init, v3)   # RA: R0 <- (R0)
+  CompareAndBranch ==(v4, v7, true: B9, false: B10)   # RA: (R0, -)
+B9 = TargetBlock() idom:B0
+  ParallelMove input(NullConstant(null) -> R0)
+  Goto(B13)
+B10 = TargetBlock() idom:B0
+  v16 = TypeCast(v4, int Function(), unchecked)   # RA: R0 <- (R0) SAFEPT{live: [R0], objects: [R0]}
+  v17 = ClosureCall(v16)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove output(R0 -> vloc:R0)
+  Goto(B13)
+B13 = JoinBlock(B10, B9) idom:B0 dominates:(B25, B29, B24)
+  v37 = Phi(v17, v7)   # RA: R0 <- (R0, -)
+  CompareAndBranch ==(v37, v7, true: B24, false: B25)   # RA: (R0, -)
+B24 = TargetBlock() idom:B13
+  ParallelMove input(IntConstant(10) -> R0)
+  Goto(B29)
+B25 = TargetBlock() idom:B13
+  v32 = TypeCast(v37, int, unchecked)   # RA: R0 <- (R0) SAFEPT{live: [R0], objects: [R0]}
+  Goto(B29)
+B29 = JoinBlock(B25, B24) idom:B13
+  v38 = Phi(v32, v27)   # RA: R0 <- (R0, -)
+  ParallelMove input(vloc:R0 -> R0)
+  Return(v38)   # RA: (R0)
+
+--- closure FunctionExpression(int () {
+  init = null;
+  print(i);
+  return 20;
+}) at lateLocalVar3
+B0 = EntryBlock() dominates:(B7, B8, B6)
+  v4 = Constant(null)
+  v10 = Constant(#sentinel)
+  v20 = Constant("i")
+  v28 = Constant(20)
+  v1 = Parameter(#closure)   # RA: param[0] <- ()
+  ParallelMove output(param[0] -> vloc:R0)
+  v3 = LoadInstanceField(#closure-field[0], v1)   # RA: R0 <- (R0)
+  ParallelMove output(R0 -> stack[0])
+  ParallelMove input(NullConstant(null) -> vloc:R1)
+  StoreInstanceField(#context-field:init, v3, v4)   # RA: (R0, R1) temps: [R2, R3] SAFEPT{live: [R0, R2, R3], objects: [R0, stack[0]]}
+  v9 = LoadInstanceField(#context-field:i, v3)   # RA: R1 <- (R0)
+  CompareAndBranch ==(v9, v10, true: B6, false: B7)   # RA: (R1, -)
+B6 = TargetBlock() idom:B0 dominates:(B16, B15)
+  v13 = LoadInstanceField(#context-field:#i#initializer, v3)   # RA: R1 <- (R0)
+  v14 = ClosureCall(v13)   # RA: R0 <- (R1) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: [stack[0]]}
+  ParallelMove output(R0 -> vloc:R0, stack[0] -> R1)
+  v17 = LoadInstanceField(#context-field:i, v3)   # RA: R2 <- (R1)
+  CompareAndBranch ==(v17, v10, true: B15, false: B16)   # RA: (R2, -)
+B15 = TargetBlock() idom:B6
+  StoreInstanceField(#context-field:i, v3, v14)   # RA: (R1, R0) temps: [R2, R3] SAFEPT{live: [R1, R2, R3], objects: [R1, stack[0]]}
+  Goto(B8)
+B7 = TargetBlock() idom:B0
+  ParallelMove control(R0 -> R1)
+  Goto(B8)
+B8 = JoinBlock(B7, B15) idom:B0
+  v25 = LoadInstanceField(#context-field:i, v3)   # RA: R0 <- (R1)
+  v26 = TypeCast(v25, int, unchecked)   # RA: R0 <- (R0) SAFEPT{live: [R0], objects: [R0]}
+  DirectCall print(v26)   # RA: R0 <- (R0) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  ParallelMove input(IntConstant(20) -> R0)
+  Return(v28)   # RA: (R0)
+B16 = TargetBlock() idom:B6
+  DirectCall LateError._throwLocalAssignedDuringInitialization(v20)   # RA: R0 <- (-) temps: [R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R19, R20, R23, R25, V0, V1, V2, V3, V4, V5, V6, V7, V8, V9, V10, V11, V12, V13, V14, V15, V16, V17, V18, V19, V20, V21, V22, V23, V24, V25, V26, V27, V28, V29, V30] SAFEPT{live: [], objects: []}
+  Unreachable(message: "LateError._throwLocalAssignedDuringInitialization should not return")
+
+--- main
+B0 = EntryBlock()
+  v1 = Constant(null)
+  ParallelMove input(NullConstant(null) -> R0)
+  Return(v1)   # RA: (R0)
+
